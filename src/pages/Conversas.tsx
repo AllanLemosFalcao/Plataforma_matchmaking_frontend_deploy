@@ -12,7 +12,7 @@ import { formatarHora } from '../utils/formatar'
 import { subtitulo } from '../utils/perfil'
 
 // Conexão com o backend via WebSocket
-const socket = io('http://localhost:3000');
+const socket = io(import.meta.env.VITE_API_URL);
 
 export function Conversas() {
   const { matchId } = useParams()
