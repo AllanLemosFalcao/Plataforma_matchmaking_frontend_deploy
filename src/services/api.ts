@@ -18,7 +18,9 @@ import type {
   ResumoAtividade,
 } from '../types'
 
-export const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000/api'
+const urlBase = import.meta.env.VITE_API_URL;
+// Se a Vercel enviar a URL, garante que o '/api' é adicionado no final. Se não, usa o localhost padrão.
+export const API_URL = urlBase ? `${urlBase}/api` : 'http://localhost:3000/api';
 
 // Helper para quando a API real estiver disponível.
 export async function http<T>(path: string, init?: RequestInit): Promise<T> {
