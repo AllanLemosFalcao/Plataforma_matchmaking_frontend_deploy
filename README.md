@@ -4,13 +4,7 @@ Plataforma PWA (Progressive Web App) de matchmaking corporativo que conecta de f
 
 ---
 
-## 👨‍💻 Desenvolvedor
-
 **Nome do Projeto:** CAISUP
-
-| Nome | Papel | GitHub |
-|------|-------|--------|
-| Allan Harrison Lemos de Barros Falcão | Full-Stack | [AllanLemosFalcao](https://github.com/AllanLemosFalcao) |
 
 ---
 
