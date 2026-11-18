@@ -11,6 +11,7 @@ export function Notificacoes() {
   const navigate = useNavigate()
   const [pendentes, setPendentes] = useState<Perfil[]>([])
   const [aberto, setAberto] = useState(false)
+  const [erroPlano, setErroPlano] = useState('')
   const raiz = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -28,22 +29,28 @@ export function Notificacoes() {
 
   async function corresponder(outro: Perfil) {
     if (!usuario) return
-    const match = await api.aceitarPendente(outro.id) // Atualizado para usar o endpoint de aceitar
-    setAberto(false)
-    if (match) navigate(`/conversas/${match.id}`)
+    setErroPlano('')
+    try {
+      const match = await api.aceitarPendente(outro.id)
+      setAberto(false)
+      if (match) navigate(`/conversas/${match.id}`)
+    } catch (err) {
+      setErroPlano((err as Error).message)
+    }
   }
 
-  // NOVA FUNÇÃO: Recusar
   async function recusar(outroId: string) {
     await api.recusarPendente(outroId)
-    // Remove instantaneamente da lista sem precisar recarregar a tela
-    setPendentes(prev => prev.filter(p => p.id !== outroId))
+    setPendentes((prev) => prev.filter((p) => p.id !== outroId))
   }
 
   return (
     <div ref={raiz} className="relative">
       <button
-        onClick={() => setAberto((a) => !a)}
+        onClick={() => {
+          setAberto((a) => !a)
+          setErroPlano('')
+        }}
         aria-label={`Notificações${pendentes.length ? ` (${pendentes.length} novas)` : ''}`}
         className="relative grid size-11 place-items-center rounded-full hover:bg-white/5"
       >
@@ -53,6 +60,21 @@ export function Notificacoes() {
 
       {aberto && (
         <div className="absolute right-0 z-30 mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-borda bg-superficie p-2 shadow-2xl">
+          {erroPlano && (
+            <div className="m-2 rounded-xl border border-rosa/40 bg-rosa/10 p-3 text-xs text-white">
+              <p>{erroPlano}</p>
+              <button
+                onClick={() => {
+                  setAberto(false)
+                  navigate('/planos')
+                }}
+                className="mt-2 font-bold text-rosa underline"
+              >
+                Ver plano Premium →
+              </button>
+            </div>
+          )}
+
           {pendentes.length === 0 ? (
             <p className="p-4 text-sm text-suave">Nenhuma notificação nova.</p>
           ) : (
@@ -64,8 +86,7 @@ export function Notificacoes() {
                     <strong>{p.nome}</strong> tem interesse em você.
                   </p>
                 </div>
-                
-                {/* NOVOS BOTÕES: Lado a Lado */}
+
                 <div className="flex gap-2 justify-end mt-1">
                   <button
                     onClick={() => recusar(p.id)}

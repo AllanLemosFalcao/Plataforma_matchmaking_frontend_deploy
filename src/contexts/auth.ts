@@ -1,11 +1,13 @@
+// src/contexts/auth.ts
 import { createContext, useContext } from 'react'
-import type { DadosCadastro, Perfil } from '../types'
+import type { DadosCadastro, Perfil, Plano } from '../types'
 
 export interface AuthContextValue {
   usuario: Perfil | null
   entrar: (email: string, senha: string) => Promise<void>
   cadastrar: (dados: DadosCadastro) => Promise<void>
   atualizar: (perfil: Perfil) => Promise<void>
+  alterarPlano: (plano: Plano) => Promise<void>
   sair: () => void
 }
 

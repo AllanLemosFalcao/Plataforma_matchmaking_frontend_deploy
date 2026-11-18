@@ -1,6 +1,7 @@
 import type { ESTAGIOS, SEGMENTOS } from '../constants'
 
 export type Papel = 'startup' | 'investidor'
+export type Plano = 'basico' | 'premium'
 export type Segmento = (typeof SEGMENTOS)[number]
 export type Estagio = (typeof ESTAGIOS)[number]
 
@@ -9,10 +10,12 @@ interface UsuarioBase {
   nome: string
   email: string
   papel: Papel
+  plano?: Plano
   /** URL ou data URL da foto/logo */
   foto?: string
   localizacao: string
-  score?: number 
+  score?: number
+  bloqueadoPlano?: boolean
 }
 
 export interface PerfilStartup extends UsuarioBase {
@@ -23,10 +26,11 @@ export interface PerfilStartup extends UsuarioBase {
   composicaoEquipe: string
   mercado: string
   modeloNegocio: string
-  /** Valor que a startup busca captar (R$) */
   valorInvestimento: number
-  /** Participação societária oferecida em troca do investimento (%) — exibida como "aderência" */
   participacaoOferecida: number
+  video_pitch_url?: string
+  documento_canvas_url?: string
+  pitch_deck_url?: string
 }
 
 export interface PerfilInvestidor extends UsuarioBase {
@@ -40,14 +44,12 @@ export interface PerfilInvestidor extends UsuarioBase {
 
 export type Perfil = PerfilStartup | PerfilInvestidor
 
-/** Distributes Omit over the union so each variant keeps its own fields. */
 type SemId<T> = T extends unknown ? Omit<T, 'id'> : never
-export type DadosCadastro = SemId<Perfil> & { 
+export type DadosCadastro = SemId<Perfil> & {
   senha: string
-  aceiteTermos?: boolean 
+  aceiteTermos?: boolean
 }
 
-/** "deId registrou interesse em paraId". Interesse mútuo = match. */
 export interface Interesse {
   deId: string
   paraId: string
@@ -79,4 +81,13 @@ export interface ResumoAtividade {
   interessesEnviados: number
   interessesRecebidos: number
   matches: number
+}
+
+export function obterUrlEmbedYouTube(url?: string): string | null {
+  if (!url) return null
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
+  const match = url.match(regExp)
+  return match && match[2]?.length === 11
+    ? `https://www.youtube.com/embed/${match[2]}?autoplay=1`
+    : null
 }

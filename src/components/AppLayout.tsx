@@ -43,14 +43,25 @@ export function AppLayout() {
 
         <div className="mt-auto border-t border-white/15 pt-5">
           {/* DIV ATUALIZADA: Agora é clicável e direciona para o perfil público */}
-          <div 
+          <div
             onClick={() => navigate(`/perfil/${usuario.id}`)}
             className="flex items-center gap-3 rounded-xl border border-borda p-2.5 cursor-pointer hover:bg-white/5 transition"
           >
             <FotoPerfil perfil={usuario} tamanho="sm" />
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <p className="truncate">{usuario.nome}</p>
-              <p className="text-sm text-suave capitalize">{usuario.papel}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-sm text-suave capitalize">{usuario.papel}</p>
+                <span
+                  className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${
+                    usuario.plano === 'premium'
+                      ? 'bg-rosa/20 text-rosa border border-rosa/40'
+                      : 'bg-white/10 text-zinc-300'
+                  }`}
+                >
+                  {usuario.plano === 'premium' ? 'Premium' : 'Gratuito'}
+                </span>
+              </div>
             </div>
           </div>
           

@@ -5,6 +5,7 @@ import { FotoPerfil } from '../components/FotoPerfil'
 import { Botao, Campo, Cartao } from '../components/ui'
 import { useAuth } from '../contexts/auth'
 import type { Perfil as TPerfil } from '../types'
+import { Link } from 'react-router'
 
 const TAMANHO_FOTO = 400 // px — reduzida antes de salvar para não pesar no armazenamento
 
@@ -58,6 +59,18 @@ export function Perfil() {
       <CabecalhoPagina titulo="Meu perfil" subtitulo="Mantenha suas informações atualizadas para melhores conexões." />
 
       <Cartao className="mx-auto max-w-2xl px-6 py-10 sm:px-14 sm:py-14">
+
+        {/* Botão para visualizar como observador --- */}
+          <div className="flex justify-end mb-8 -mt-2">
+            <Link 
+              to={`/perfil/${dados.id}`} 
+              target="_blank"
+              className="text-sm font-semibold text-(--acento) hover:underline transition-all flex items-center gap-2"
+            >
+              Visualizar como observador ↗
+            </Link>
+          </div>
+          {/* --------------------------------------------------- */}
         <form onSubmit={salvar} className="space-y-6">
           <div className="flex flex-wrap items-center gap-6 sm:gap-8">
             {/* No design a foto do perfil é sempre redonda, inclusive o logo da startup */}

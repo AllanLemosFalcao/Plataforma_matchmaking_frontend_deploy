@@ -1,6 +1,7 @@
+// src/contexts/AuthProvider.tsx
 import { useState, type ReactNode } from 'react'
 import * as api from '../services/api'
-import type { DadosCadastro, Perfil } from '../types'
+import type { DadosCadastro, Perfil, Plano } from '../types'
 import { AuthContext } from './auth'
 
 const CHAVE = 'usuario'
@@ -19,8 +20,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   function salvar(perfil: Perfil | null) {
     setUsuario(perfil)
-    if (perfil) localStorage.setItem(CHAVE, JSON.stringify(perfil))
-    else localStorage.removeItem(CHAVE)
+    if (perfil) {
+      localStorage.setItem(CHAVE, JSON.stringify(perfil))
+    } else {
+      localStorage.removeItem(CHAVE)
+      localStorage.removeItem('token')
+    }
   }
 
   const value = {
@@ -28,6 +33,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     entrar: async (email: string, senha: string) => salvar(await api.login(email, senha)),
     cadastrar: async (dados: DadosCadastro) => salvar(await api.cadastrar(dados)),
     atualizar: async (perfil: Perfil) => salvar(await api.atualizarPerfil(perfil)),
+    alterarPlano: async (novoPlano: Plano) => {
+      const confirmado = await api.alterarPlano(novoPlano)
+      if (usuario) salvar({ ...usuario, plano: confirmado })
+    },
     sair: () => salvar(null),
   }
 

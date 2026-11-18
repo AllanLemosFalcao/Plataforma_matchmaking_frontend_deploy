@@ -106,6 +106,26 @@ export function CamposStartup({
           onChange={(e) => mudar({ participacaoOferecida: Number(e.target.value) })}
         />
       </div>
+
+      {/* ================= NOVOS CAMPOS DE MATERIAIS ================= */}
+      <div className="pt-4 mt-2 space-y-4 border-t border-white/10">
+        <h3 className="text-[15px] font-semibold text-zinc-300">Materiais de Apresentação (Opcional)</h3>
+        
+        <Campo
+          label="Link do Vídeo de Pitch (YouTube)"
+          placeholder="Ex.: https://www.youtube.com/watch?v=..."
+          value={dados.video_pitch_url || ''}
+          onChange={(e) => mudar({ video_pitch_url: e.target.value })}
+        />
+        
+        <Campo
+          label="Link do Business Model Canvas ou Pitch Deck (PDF/Drive)"
+          placeholder="Ex.: https://drive.google.com/file/d/..."
+          value={dados.documento_canvas_url || ''}
+          onChange={(e) => mudar({ documento_canvas_url: e.target.value })}
+        />
+      </div>
+      {/* ============================================================= */}
     </>
   )
 }
