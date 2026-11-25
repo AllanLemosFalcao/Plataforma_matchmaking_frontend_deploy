@@ -22,20 +22,20 @@ Acesse a plataforma utilizando qualquer um dos e-mails abaixo.
 
 | Startup |
 
-contato@agrosmart.com ~ João Agro
-ceo@saudeplus.com ~ Maria Saúde
-admin@finpay.com ~ Carlos Fin
-mtglog@email.com ~ Pedro MTG Log
-contato@educafacil.com ~ Ana Edu
+* `contato@agrosmart.com ~ João Agro`
+* `ceo@saudeplus.com ~ Maria Saúde`
+* `admin@finpay.com ~ Carlos Fin`
+* `mtglog@email.com ~ Pedro MTG Log`
+* `contato@educafacil.com ~ Ana Edu`
 
 | Investidor |
 
-deals@venturelog.com  ~ Venture Log
-dealflow@bossanova.com ~ Bossa Nova Investimentos
-contato@agroventures.com ~ AgroVentures VC
-invest@capitalhealth.com ~ Capital Health
-joao.anjo@gmail.com ~ João Anjo
-hubcap@email.com ~ Hub Capital
+* `deals@venturelog.com  ~ Venture Log`
+* `dealflow@bossanova.com ~ Bossa Nova Investimentos`
+* `contato@agroventures.com ~ AgroVentures VC`
+* `invest@capitalhealth.com ~ Capital Health`
+* `joao.anjo@gmail.com ~ João Anjo`
+* `hubcap@email.com ~ Hub Capital`
 
 
 * `teste@teste.com`
