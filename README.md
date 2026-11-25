@@ -20,13 +20,31 @@ Plataforma PWA (Progressive Web App) de matchmaking corporativo que conecta de f
 Acesse a plataforma utilizando qualquer um dos e-mails abaixo.
 **Senha padrão para todas as contas:** `123456`
 
+| Startup |
+
+contato@agrosmart.com ~ João Agro
+ceo@saudeplus.com ~ Maria Saúde
+admin@finpay.com ~ Carlos Fin
+mtglog@email.com ~ Pedro MTG Log
+contato@educafacil.com ~ Ana Edu
+
+| Investidor |
+
+deals@venturelog.com  ~ Venture Log
+dealflow@bossanova.com ~ Bossa Nova Investimentos
+contato@agroventures.com ~ AgroVentures VC
+invest@capitalhealth.com ~ Capital Health
+joao.anjo@gmail.com ~ João Anjo
+hubcap@email.com ~ Hub Capital
+
+
 * `teste@teste.com`
 * `deals@venturelog.com`
 * `contato@agrosmart.com`
 * `ceo@saudeplus.com`
 * `admin@finpay.com`
 * `contato@educafacil.com`
-* `ops@logisfast.com`
+* `mtglog@email.com`
 * `dealflow@bossanova.com`
 * `contato@agroventures.com`
 * `invest@capitalhealth.com`
