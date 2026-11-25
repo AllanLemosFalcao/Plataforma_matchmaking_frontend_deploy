@@ -37,19 +37,6 @@ Acesse a plataforma utilizando qualquer um dos e-mails abaixo.
 * `joao.anjo@gmail.com ~ João Anjo`
 * `hubcap@email.com ~ Hub Capital`
 
-
-* `teste@teste.com`
-* `deals@venturelog.com`
-* `contato@agrosmart.com`
-* `ceo@saudeplus.com`
-* `admin@finpay.com`
-* `contato@educafacil.com`
-* `mtglog@email.com`
-* `dealflow@bossanova.com`
-* `contato@agroventures.com`
-* `invest@capitalhealth.com`
-* `joao.anjo@gmail.com`
-
 ---
 
 ## 🚀 Sobre o Projeto (Front-End)
